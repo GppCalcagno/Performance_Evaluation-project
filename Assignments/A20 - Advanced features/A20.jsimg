@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<archive xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="A20.jsimg" timestamp="Fri Dec 30 16:19:09 CET 2022" xsi:noNamespaceSchemaLocation="Archive.xsd">
+<sim disableStatisticStop="false" logDecimalSeparator="," logDelimiter=";" logPath="C:\Users\josep\JMT" logReplaceMode="0" maxEvents="-1" maxSamples="1000000" name="A20.jsimg" polling="1.0" xsi:noNamespaceSchemaLocation="SIMmodeldefinition.xsd">
+<userClass customers="1" name="BeforeGPU" priority="0" referenceSource="Delay 1" type="closed"/>
+<userClass customers="0" name="AfterGPU" priority="0" referenceSource="Delay 1" type="closed"/>
+<node name="GPU">
+<section className="Queue">
+<parameter classPath="java.lang.Integer" name="size">
+<value>-1</value>
+</parameter>
+<parameter array="true" classPath="java.lang.String" name="dropStrategies">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ServiceStrategy" name="retrialDistributions"/>
+<parameter classPath="jmt.engine.NetStrategies.QueueGetStrategies.FCFSstrategy" name="FCFSstrategy"/>
+<parameter array="true" classPath="jmt.engine.NetStrategies.QueuePutStrategy" name="QueuePutStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+</parameter>
+</section>
+<section className="Server">
+<parameter classPath="java.lang.Integer" name="maxJobs">
+<value>1</value>
+</parameter>
+<parameter array="true" classPath="java.lang.Integer" name="numberOfVisits">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.Integer" name="numberOfVisits">
+<value>1</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.Integer" name="numberOfVisits">
+<value>1</value>
+</subParameter>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ServiceStrategy" name="ServerStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ServiceStrategies.ServiceTimeStrategy" name="ServiceTimeStrategy">
+<subParameter classPath="jmt.engine.random.Erlang" name="Erlang"/>
+<subParameter classPath="jmt.engine.random.ErlangPar" name="distrPar">
+<subParameter classPath="java.lang.Double" name="alpha">
+<value>0.9000000000000001</value>
+</subParameter>
+<subParameter classPath="java.lang.Long" name="r">
+<value>9</value>
+</subParameter>
+</subParameter>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ServiceStrategies.DisabledServiceTimeStrategy" name="DisabledServiceTimeStrategy"/>
+</parameter>
+</section>
+<section className="Router">
+<parameter array="true" classPath="jmt.engine.NetStrategies.RoutingStrategy" name="RoutingStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.RandomStrategy" name="Random"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.DisabledRoutingStrategy" name="Disabled"/>
+</parameter>
+</section>
+</node>
+<node name="ClassSwitch 1">
+<section className="Queue">
+<parameter classPath="java.lang.Integer" name="size">
+<value>-1</value>
+</parameter>
+<parameter array="true" classPath="java.lang.String" name="dropStrategies">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ServiceStrategy" name="retrialDistributions"/>
+<parameter classPath="jmt.engine.NetStrategies.QueueGetStrategies.FCFSstrategy" name="FCFSstrategy"/>
+<parameter array="true" classPath="jmt.engine.NetStrategies.QueuePutStrategy" name="QueuePutStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+</parameter>
+</section>
+<section className="ClassSwitch">
+<parameter array="true" classPath="java.lang.Object" name="matrix">
+<refClass>BeforeGPU</refClass>
+<subParameter array="true" classPath="java.lang.Float" name="row">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.Float" name="cell">
+<value>0.0</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.Float" name="cell">
+<value>1.0</value>
+</subParameter>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter array="true" classPath="java.lang.Float" name="row">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.Float" name="cell">
+<value>0.0</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.Float" name="cell">
+<value>1.0</value>
+</subParameter>
+</subParameter>
+</parameter>
+</section>
+<section className="Router">
+<parameter array="true" classPath="jmt.engine.NetStrategies.RoutingStrategy" name="RoutingStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.RandomStrategy" name="Random"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.RandomStrategy" name="Random"/>
+</parameter>
+</section>
+</node>
+<node name="CPU">
+<section className="Queue">
+<parameter classPath="java.lang.Integer" name="size">
+<value>-1</value>
+</parameter>
+<parameter array="true" classPath="java.lang.String" name="dropStrategies">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ServiceStrategy" name="retrialDistributions"/>
+<parameter classPath="jmt.engine.NetStrategies.QueueGetStrategies.FCFSstrategy" name="FCFSstrategy"/>
+<parameter array="true" classPath="jmt.engine.NetStrategies.QueuePutStrategy" name="QueuePutStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+</parameter>
+</section>
+<section className="Server">
+<parameter classPath="java.lang.Integer" name="maxJobs">
+<value>1</value>
+</parameter>
+<parameter array="true" classPath="java.lang.Integer" name="numberOfVisits">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.Integer" name="numberOfVisits">
+<value>1</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.Integer" name="numberOfVisits">
+<value>1</value>
+</subParameter>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ServiceStrategy" name="ServerStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ServiceStrategies.ServiceTimeStrategy" name="ServiceTimeStrategy">
+<subParameter classPath="jmt.engine.random.Erlang" name="Erlang"/>
+<subParameter classPath="jmt.engine.random.ErlangPar" name="distrPar">
+<subParameter classPath="java.lang.Double" name="alpha">
+<value>1.5</value>
+</subParameter>
+<subParameter classPath="java.lang.Long" name="r">
+<value>9</value>
+</subParameter>
+</subParameter>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ServiceStrategies.ServiceTimeStrategy" name="ServiceTimeStrategy">
+<subParameter classPath="jmt.engine.random.Erlang" name="Erlang"/>
+<subParameter classPath="jmt.engine.random.ErlangPar" name="distrPar">
+<subParameter classPath="java.lang.Double" name="alpha">
+<value>2.25</value>
+</subParameter>
+<subParameter classPath="java.lang.Long" name="r">
+<value>9</value>
+</subParameter>
+</subParameter>
+</subParameter>
+</parameter>
+</section>
+<section className="Router">
+<parameter array="true" classPath="jmt.engine.NetStrategies.RoutingStrategy" name="RoutingStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.EmpiricalStrategy" name="Probabilities">
+<subParameter array="true" classPath="jmt.engine.random.EmpiricalEntry" name="EmpiricalEntryArray">
+<subParameter classPath="jmt.engine.random.EmpiricalEntry" name="EmpiricalEntry">
+<subParameter classPath="java.lang.String" name="stationName">
+<value>GPU</value>
+</subParameter>
+<subParameter classPath="java.lang.Double" name="probability">
+<value>1.0</value>
+</subParameter>
+</subParameter>
+<subParameter classPath="jmt.engine.random.EmpiricalEntry" name="EmpiricalEntry">
+<subParameter classPath="java.lang.String" name="stationName">
+<value>ClassSwitch 3</value>
+</subParameter>
+<subParameter classPath="java.lang.Double" name="probability">
+<value>0.0</value>
+</subParameter>
+</subParameter>
+</subParameter>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.EmpiricalStrategy" name="Probabilities">
+<subParameter array="true" classPath="jmt.engine.random.EmpiricalEntry" name="EmpiricalEntryArray">
+<subParameter classPath="jmt.engine.random.EmpiricalEntry" name="EmpiricalEntry">
+<subParameter classPath="java.lang.String" name="stationName">
+<value>GPU</value>
+</subParameter>
+<subParameter classPath="java.lang.Double" name="probability">
+<value>0.0</value>
+</subParameter>
+</subParameter>
+<subParameter classPath="jmt.engine.random.EmpiricalEntry" name="EmpiricalEntry">
+<subParameter classPath="java.lang.String" name="stationName">
+<value>ClassSwitch 3</value>
+</subParameter>
+<subParameter classPath="java.lang.Double" name="probability">
+<value>1.0</value>
+</subParameter>
+</subParameter>
+</subParameter>
+</subParameter>
+</parameter>
+</section>
+</node>
+<node name="Delay 1">
+<section className="Queue">
+<parameter classPath="java.lang.Integer" name="size">
+<value>-1</value>
+</parameter>
+<parameter array="true" classPath="java.lang.String" name="dropStrategies">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ServiceStrategy" name="retrialDistributions"/>
+<parameter classPath="jmt.engine.NetStrategies.QueueGetStrategies.FCFSstrategy" name="FCFSstrategy"/>
+<parameter array="true" classPath="jmt.engine.NetStrategies.QueuePutStrategy" name="QueuePutStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+</parameter>
+</section>
+<section className="Delay">
+<parameter array="true" classPath="jmt.engine.NetStrategies.ServiceStrategy" name="ServerStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ServiceStrategies.ServiceTimeStrategy" name="ServiceTimeStrategy">
+<subParameter classPath="jmt.engine.random.Exponential" name="Exponential"/>
+<subParameter classPath="jmt.engine.random.ExponentialPar" name="distrPar">
+<subParameter classPath="java.lang.Double" name="lambda">
+<value>0.05</value>
+</subParameter>
+</subParameter>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ServiceStrategies.DisabledServiceTimeStrategy" name="DisabledServiceTimeStrategy"/>
+</parameter>
+</section>
+<section className="Router">
+<parameter array="true" classPath="jmt.engine.NetStrategies.RoutingStrategy" name="RoutingStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.RandomStrategy" name="Random"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.DisabledRoutingStrategy" name="Disabled"/>
+</parameter>
+</section>
+</node>
+<node name="ClassSwitch 3">
+<section className="Queue">
+<parameter classPath="java.lang.Integer" name="size">
+<value>-1</value>
+</parameter>
+<parameter array="true" classPath="java.lang.String" name="dropStrategies">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.String" name="dropStrategy">
+<value>drop</value>
+</subParameter>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ServiceStrategy" name="retrialDistributions"/>
+<parameter classPath="jmt.engine.NetStrategies.QueueGetStrategies.FCFSstrategy" name="FCFSstrategy"/>
+<parameter array="true" classPath="jmt.engine.NetStrategies.QueuePutStrategy" name="QueuePutStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.QueuePutStrategies.TailStrategy" name="TailStrategy"/>
+</parameter>
+<parameter array="true" classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.ImpatienceStrategies.Impatience" name="Impatience">
+<value>null</value>
+</subParameter>
+</parameter>
+</section>
+<section className="ClassSwitch">
+<parameter array="true" classPath="java.lang.Object" name="matrix">
+<refClass>BeforeGPU</refClass>
+<subParameter array="true" classPath="java.lang.Float" name="row">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.Float" name="cell">
+<value>1.0</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.Float" name="cell">
+<value>0.0</value>
+</subParameter>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter array="true" classPath="java.lang.Float" name="row">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="java.lang.Float" name="cell">
+<value>1.0</value>
+</subParameter>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="java.lang.Float" name="cell">
+<value>0.0</value>
+</subParameter>
+</subParameter>
+</parameter>
+</section>
+<section className="Router">
+<parameter array="true" classPath="jmt.engine.NetStrategies.RoutingStrategy" name="RoutingStrategy">
+<refClass>BeforeGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.RandomStrategy" name="Random"/>
+<refClass>AfterGPU</refClass>
+<subParameter classPath="jmt.engine.NetStrategies.RoutingStrategies.RandomStrategy" name="Random"/>
+</parameter>
+</section>
+</node>
+<measure alpha="0.01" name="System Throughput" nodeType="" precision="0.03" referenceNode="" referenceUserClass="" type="System Throughput" verbose="false"/>
+<measure alpha="0.01" name="CPU_BeforeGPU_Utilization" nodeType="station" precision="0.03" referenceNode="CPU" referenceUserClass="BeforeGPU" type="Utilization" verbose="false"/>
+<measure alpha="0.01" name="GPU_Utilization" nodeType="station" precision="0.03" referenceNode="GPU" referenceUserClass="" type="Utilization" verbose="false"/>
+<measure alpha="0.01" name="System Response Time" nodeType="" precision="0.03" referenceNode="" referenceUserClass="" type="System Response Time" verbose="false"/>
+<measure alpha="0.01" name="CPU_AfterGPU_Utilization" nodeType="station" precision="0.03" referenceNode="CPU" referenceUserClass="AfterGPU" type="Utilization" verbose="false"/>
+<measure alpha="0.01" name="GPU_BeforeGPU_Response Time" nodeType="station" precision="0.05" referenceNode="GPU" referenceUserClass="BeforeGPU" type="Response Time" verbose="false"/>
+<measure alpha="0.01" name="CPU_BeforeGPU_Response Time" nodeType="station" precision="0.05" referenceNode="CPU" referenceUserClass="BeforeGPU" type="Response Time" verbose="false"/>
+<measure alpha="0.01" name="CPU_AfterGPU_Response Time" nodeType="station" precision="0.05" referenceNode="CPU" referenceUserClass="AfterGPU" type="Response Time" verbose="false"/>
+<connection source="GPU" target="ClassSwitch 1"/>
+<connection source="ClassSwitch 1" target="CPU"/>
+<connection source="CPU" target="GPU"/>
+<connection source="CPU" target="ClassSwitch 3"/>
+<connection source="Delay 1" target="CPU"/>
+<connection source="ClassSwitch 3" target="Delay 1"/>
+<preload>
+<stationPopulations stationName="Delay 1">
+<classPopulation population="1" refClass="BeforeGPU"/>
+</stationPopulations>
+</preload>
+</sim>
+<jmodel xsi:noNamespaceSchemaLocation="JModelGUI.xsd">
+<userClass color="#FF0000FF" name="BeforeGPU"/>
+<userClass color="#FFFF0000" name="AfterGPU"/>
+<station name="GPU">
+<position angle="0.0" rotate="false" x="605.0" y="279.0"/>
+</station>
+<station name="ClassSwitch 1">
+<position angle="0.0" rotate="false" x="819.0" y="284.0"/>
+</station>
+<station name="CPU">
+<position angle="0.0" rotate="false" x="284.0" y="277.0"/>
+</station>
+<station name="Delay 1">
+<position angle="0.0" rotate="false" x="656.0" y="154.0"/>
+</station>
+<station name="ClassSwitch 3">
+<position angle="0.0" rotate="false" x="458.0" y="179.0"/>
+</station>
+<connectionShape source="Delay 1" target="CPU">
+<arc>
+<source x="0.0" y="0.0"/>
+<point x="0.0" y="0.0"/>
+<point x="0.0" y="0.0"/>
+<target x="74.0" y="1.4000000000000057"/>
+</arc>
+<arc>
+<source x="74.0" y="1.4000000000000057"/>
+<point x="0.0" y="0.0"/>
+<point x="0.0" y="0.0"/>
+<target x="74.0" y="-55.599999999999994"/>
+</arc>
+<arc>
+<source x="74.0" y="-55.599999999999994"/>
+<point x="0.0" y="0.0"/>
+<point x="0.0" y="0.0"/>
+<target x="-546.0" y="-55.599999999999994"/>
+</arc>
+<arc>
+<source x="-546.0" y="-55.599999999999994"/>
+<point x="0.0" y="0.0"/>
+<point x="0.0" y="0.0"/>
+<target x="-546.0" y="104.39999999999998"/>
+</arc>
+<arc>
+<source x="-546.0" y="104.39999999999998"/>
+<point x="0.0" y="0.0"/>
+<point x="0.0" y="0.0"/>
+<target x="0.0" y="0.0"/>
+</arc>
+</connectionShape>
+<parametric classPath="jmt.gui.common.definitions.parametric.NumberOfCustomerParametricAnalysis" enabled="true">
+<field name="Class" value="BeforeGPU"/>
+<field name="Is single class" value="true"/>
+<field name="Steps" value="3"/>
+<field name="To" value="20.0"/>
+<field name="Type" value="Number of customers"/>
+</parametric>
+</jmodel>
+<results elapsedTime="0" logDecimalSeparator="," logDelimiter=";" pollingInterval="0.0" xsi:noNamespaceSchemaLocation="Results.xsd">
+<measure alpha="0.99" analyzedSamples="3" name="Network_All classes_System Throughput" nodeType="" precision="0.03" referenceClass="All classes" referenceStation="Network" type="9">
+<sample lowerBound="0.024199757659712735" meanValue="0.02490722358131169" upperBound="0.02565729990770243" validity="true"/>
+<sample lowerBound="0.0968491781008679" meanValue="0.09806462616434897" upperBound="0.09931096947774745" validity="true"/>
+<sample lowerBound="0.09650317344550963" meanValue="0.09906365067987205" upperBound="0.101763703292249" validity="true"/>
+</measure>
+<measure alpha="0.99" analyzedSamples="3" name="CPU_BeforeGPU_Utilization" nodeType="station" precision="0.03" referenceClass="BeforeGPU" referenceStation="CPU" type="4">
+<sample lowerBound="0.1478997530114277" meanValue="0.15061384186677518" upperBound="0.15332793072212267" validity="true"/>
+<sample lowerBound="0.5774757114741039" meanValue="0.5944429939339392" upperBound="0.6114102763937744" validity="true"/>
+<sample lowerBound="0.5768075373926508" meanValue="0.5909909956344648" upperBound="0.6051744538762788" validity="true"/>
+</measure>
+<measure alpha="0.99" analyzedSamples="3" name="GPU_All classes_Utilization" nodeType="station" precision="0.03" referenceClass="All classes" referenceStation="GPU" type="4">
+<sample lowerBound="0.2466020477436807" meanValue="0.2504325041950398" upperBound="0.2542629606463989" validity="true"/>
+<sample lowerBound="0.9433443349154866" meanValue="0.9722566539944097" upperBound="1.0011689730733329" validity="true"/>
+<sample lowerBound="0.9794461635587773" meanValue="0.9929237609575342" upperBound="1.0064013583562912" validity="true"/>
+</measure>
+<measure alpha="0.99" analyzedSamples="3" name="Network_All classes_System Response Time" nodeType="" precision="0.03" referenceClass="All classes" referenceStation="Network" type="8">
+<sample lowerBound="38.97526254116069" meanValue="40.14899519954191" upperBound="41.32272785792313" validity="true"/>
+<sample lowerBound="100.65497718936608" meanValue="101.97355920826683" upperBound="103.29214122716759" validity="true"/>
+<sample lowerBound="196.36866566798642" meanValue="201.92710521629027" upperBound="207.48554476459412" validity="true"/>
+</measure>
+<measure alpha="0.99" analyzedSamples="3" name="CPU_AfterGPU_Utilization" nodeType="station" precision="0.03" referenceClass="AfterGPU" referenceStation="CPU" type="4">
+<sample lowerBound="0.09841325077446418" meanValue="0.10023677461241147" upperBound="0.10206029845035876" validity="true"/>
+<sample lowerBound="0.380073484954857" meanValue="0.390073511681193" upperBound="0.40007353840752896" validity="true"/>
+<sample lowerBound="0.3863339693766424" meanValue="0.3959338844633128" upperBound="0.4055337995499832" validity="true"/>
+</measure>
+<measure alpha="0.99" analyzedSamples="3" name="GPU_BeforeGPU_Response Time" nodeType="station" precision="0.05" referenceClass="BeforeGPU" referenceStation="GPU" type="2">
+<sample lowerBound="9.638417693461289" meanValue="10.02070239294837" upperBound="10.402987092435453" validity="true"/>
+<sample lowerBound="36.029770383258764" meanValue="37.84229183409015" upperBound="39.65481328492153" validity="true"/>
+<sample lowerBound="85.53087078336111" meanValue="88.67250473127658" upperBound="91.81413867919204" validity="true"/>
+</measure>
+<measure alpha="0.99" analyzedSamples="3" name="CPU_BeforeGPU_Response Time" nodeType="station" precision="0.05" referenceClass="BeforeGPU" referenceStation="CPU" type="2">
+<sample lowerBound="5.850177117783813" meanValue="6.013840185332418" upperBound="6.1775032528810225" validity="true"/>
+<sample lowerBound="21.943056955604916" meanValue="22.907702198745437" upperBound="23.872347441885957" validity="true"/>
+<sample lowerBound="45.16064131826114" meanValue="47.2671205584554" upperBound="49.373599798649664" validity="true"/>
+</measure>
+<measure alpha="0.99" analyzedSamples="3" name="CPU_AfterGPU_Response Time" nodeType="station" precision="0.05" referenceClass="AfterGPU" referenceStation="CPU" type="2">
+<sample lowerBound="3.948827985400797" meanValue="4.007726049201721" upperBound="4.066624113002645" validity="true"/>
+<sample lowerBound="20.867566077640113" meanValue="21.577586891780953" upperBound="22.287607705921793" validity="true"/>
+<sample lowerBound="44.17386916172378" meanValue="46.12056272530025" upperBound="48.06725628887673" validity="true"/>
+</measure>
+</results>
+</archive>
